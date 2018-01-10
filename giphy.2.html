@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Has (2) Children: Head and Body -->
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Giphy</title>
+    <style type="text/css">
+        button,
+        div,
+        form,
+        input {
+            margin: 10px;
+            width: 60px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+   <div id="button-view"></div>
+ <div id="gifs-appear-here">
+  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //  queryURL for Giphy API 
+            var topics = ["Excited", "Mad", "OMG", "Eye Roll", "Bye"];
+                for(var i=0; i < topics.length; i++)
+             
+
+            // Create Button and add data-name attribute
+             var a = $("<button>");
+            // Add data attribute to button
+            a.attr("data-topic", topics[i]);
+            // Add class to button
+            a.addClass("excited");
+            // Initial Button text
+            a.text(topics[i]);
+            $("#button-view").append(a);
+        
+        $("button").on("click", function () {
+                // In this case, the "this" keyword refers to the button that was clicked
+                var topic = $(this).attr("data-topic");
+          
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=o98EX203IDhFreyhyLMErmPhKcVgQw2y";
+            console.log(queryURL);
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+            .done(function(response) {
+                var results = response.data;
+                console.log(results);
+        });
+        })
+        })
+    </script>
+</body>
+
+</html>
