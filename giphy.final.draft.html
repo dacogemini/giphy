@@ -104,7 +104,7 @@ $(function () {
     }   
     $(document).on("click", ".animal", function(event){
             var animal = $(this).attr("data-name");
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=o98EX203IDhFreyhyLMErmPhKcVgQw2y";
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=o98EX203IDhFreyhyLMErmPhKcVgQw2y&limit=10";
     
                 $.ajax({
                     url: queryURL,
